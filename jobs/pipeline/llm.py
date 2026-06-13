@@ -36,12 +36,15 @@ def classify_transactions(transactions_list):
     # Retry logic - 3 baar try karo
     for attempt in range(3):
         try:
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt
+            )
             text = response.text.strip()
 
             # JSON clean karo
             text = text.replace('```json', '').replace('```', '').strip()
-            result = json.loads(text)
+            result = json.loads(text)       
             return result
 
         except Exception as e:
@@ -89,13 +92,17 @@ def generate_summary(transactions_list, anomaly_count):
 
     for attempt in range(3):
         try:
-            response = model.generate_content(prompt)
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt
+                )
             text = response.text.strip()
             text = text.replace('```json', '').replace('```', '').strip()
             result = json.loads(text)
             return result
 
         except Exception as e:
+            print(f"ATTEMPT {attempt} FAILED: {e}")
             if attempt < 2:
                 time.sleep(2 ** attempt)
             else:

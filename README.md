@@ -49,3 +49,5 @@ curl http://localhost:8000/jobs/
 2. **Anomaly Detection** — 3x median flag, wrong currency flag
 3. **LLM Classification** — Gemini se categories assign
 4. **LLM Summary** — narrative + risk level generate
+
+Note: Gemini free tier quota limits may apply
