@@ -51,3 +51,6 @@ curl http://localhost:8000/jobs/
 4. **LLM Summary** — narrative + risk level generate
 
 Note: Gemini free tier quota limits may apply
+
+## Architecture
+![Architecture](diagram.png)
